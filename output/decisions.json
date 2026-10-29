@@ -1,0 +1,113 @@
+{
+  "run_id": "a2ff6789b7a2",
+  "results": [
+    {
+      "entry_id": "JE-001",
+      "status": "PASSED_PENDING_APPROVAL",
+      "defects": [],
+      "explanation": null
+    },
+    {
+      "entry_id": "JE-002",
+      "status": "REJECTED",
+      "defects": [
+        {
+          "code": "ENTRY_OUT_OF_BALANCE",
+          "severity": "reject",
+          "detail": "Entry is out of balance.",
+          "evidence": {
+            "debit_total": "28500.0",
+            "credit_total": "25000.0",
+            "difference": "3500.0"
+          }
+        }
+      ],
+      "explanation": "The journal entry JE-002 was rejected because the total debits of 28,500.00 do not equal the total credits of 25,000.00, leaving an imbalance of 3,500.00. The system requires every entry to balance to zero. You should review each line amount in the entry to find where the 3,500.00 discrepancy originates and adjust the debits or credits so they match."
+    },
+    {
+      "entry_id": "JE-003",
+      "status": "QUARANTINED",
+      "defects": [
+        {
+          "code": "FX_REVALUATION_MISMATCH",
+          "severity": "quarantine",
+          "detail": "EUR cash revaluation books 11200.0 for EUR cash revaluation, but the TB balance and supplied rates imply 10730.200.",
+          "evidence": {
+            "currency": "EUR",
+            "account": "1110",
+            "eur_balance": "825400",
+            "period_average_rate": "1.082",
+            "period_end_rate": "1.095",
+            "expected_revaluation": "10730.200",
+            "booked_revaluation": "11200.0",
+            "difference": "469.800"
+          }
+        }
+      ],
+      "explanation": "The entry was quarantined because the booked FX revaluation of 11,200.0 for EUR cash account 1110 does not match the expected revaluation of 10,730.200 derived from the EUR balance of 825,400 and the period\u2011end rate of 1.095, leaving a difference of 469.800. Check whether the revaluation used the correct period\u2011end rate, the correct EUR cash balance, or the proper calculation method (e.g., using average vs. ending rate). Verify the source of the 1.095 rate and confirm the EUR balance at period\u2011end. Ensure the revaluation logic aligns with policy before releasing the entry."
+    },
+    {
+      "entry_id": "JE-004",
+      "status": "PASSED_PENDING_APPROVAL",
+      "defects": [],
+      "explanation": null
+    },
+    {
+      "entry_id": "JE-005",
+      "status": "QUARANTINED",
+      "defects": [
+        {
+          "code": "ACCOUNT_NOT_IN_COA",
+          "severity": "quarantine",
+          "detail": "Line 1 references account 6315, which is not in the chart of accounts.",
+          "evidence": {
+            "account": "6315",
+            "line_number": 1
+          }
+        }
+      ],
+      "explanation": "The entry was quarantined because line\u202f1 uses account\u202f6315, which does not exist in the current chart of accounts.  \nCheck whether account\u202f6315 should be added to the COA or if the line should be recoded to a valid account.  \nAlso verify that the reclassification description matches the intended account change."
+    },
+    {
+      "entry_id": "JE-006",
+      "status": "PASSED_PENDING_APPROVAL",
+      "defects": [],
+      "explanation": null
+    },
+    {
+      "entry_id": "JE-007",
+      "status": "PASSED_PENDING_APPROVAL",
+      "defects": [],
+      "explanation": null
+    },
+    {
+      "entry_id": "JE-008",
+      "status": "REJECTED",
+      "defects": [
+        {
+          "code": "ENTRY_NETS_TO_ZERO_PER_ACCOUNT",
+          "severity": "reject",
+          "detail": "Entry has equal debits and credits on every account and has no net accounting effect.",
+          "evidence": {
+            "account_net": {
+              "2170": "0.0"
+            }
+          }
+        }
+      ],
+      "explanation": "The entry was rejected because it contains equal debits and credits on account 2170, resulting in a net zero effect with no accounting impact. This defect indicates the entry does not change any account balances. Check whether the intercompany settlement should affect account 2170 or another account, and verify the debit and credit amounts are correct."
+    },
+    {
+      "entry_id": "JE-009",
+      "status": "PASSED_PENDING_APPROVAL",
+      "defects": [],
+      "explanation": null
+    },
+    {
+      "entry_id": "JE-010",
+      "status": "PASSED_PENDING_APPROVAL",
+      "defects": [],
+      "explanation": null
+    }
+  ]
+}
